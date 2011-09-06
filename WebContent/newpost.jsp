@@ -12,6 +12,7 @@
 <%@page import="org.apache.tomcat.util.http.fileupload.FileUpload"%>
 <%@page import="org.apache.tomcat.util.http.fileupload.MultipartStream"%>
 <%@page import="java.util.Map"%><html xmlns="http://www.w3.org/1999/xhtml">
+<%@ page import="nl.captcha.Captcha" %>
 
 <tags:header title=" - Post"></tags:header>
 
@@ -29,6 +30,14 @@ User loggedInUser = (User) session.getAttribute(SessionKeys.USER_OBJECT);
 	Map<String, String[]> parameters = MultiPartParser.parseRequest(null, request, getServletContext(), "UTF-8");
 	if (parameters !=null && parameters.containsKey("Title"))
 	{
+		Captcha captcha = (Captcha) session.getAttribute(Captcha.NAME);
+		request.setCharacterEncoding("UTF-8"); // Do this so we can capture non-Latin chars
+		String answer = parameters.get("answer")[0];
+		if (captcha.isCorrect(answer)) { %>
+		    <b>Correct captcha!</b> <br />
+		<% } else { %>
+		    <b>Wrong captcha!</b> <br />
+		<% }
 		
 		BlogPost post = new BlogPost(parameters.get("Title")[0],
 							 parameters.get("Post")[0],
@@ -52,6 +61,8 @@ User loggedInUser = (User) session.getAttribute(SessionKeys.USER_OBJECT);
 	else
 	{
 		%>
+		
+		<img src="stickyCaptcha.png" /><br />
 		<div class="blogPost">
 			<form action="" method="post" enctype="multipart/form-data">
 				<span>Title:</span><input type="text" name="Title"/><br/>
@@ -59,6 +70,7 @@ User loggedInUser = (User) session.getAttribute(SessionKeys.USER_OBJECT);
 				<span>Post:</span><br/>
 				<span>Picture:</span><input type="file" name="Picture" accept="image/jpeg image/gif image/png"/>
 				<textarea class="text" rows="5" cols="30" name="Post"></textarea>
+				<span>Captcha Answer:</span> <input name="answer" /> <br/>
 				<input type="submit" value="Post"/>
 			</form>
 		</div>
