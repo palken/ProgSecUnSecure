@@ -1,0 +1,79 @@
+@CHARSET "UTF-8";
+body
+{
+	background-color: #f9f7ec;
+	margin: 10% auto 10% auto ;
+	display: block;
+	position: relative;
+	width:600px;
+	height:80%;
+	min-height:600px;
+	overflow: scroll;
+	border: 10px solid #fec23a;
+	border-radius: 10px;
+	-moz-box-shadow: rgba(0,0,0,0.3) 10px 10px;
+ 	-webkit-box-shadow: rgba(0,0,0,0.3) 10px 10px;
+	box-shadow: rgba(0,0,0,0.3) 10px 10px;
+	
+}
+.content
+{
+	
+}
+.menu 
+{
+	float:left;
+	position: absolute;
+	left: -143px;
+	top:-10px;
+	width:100px;
+	border: 10px solid #fec23a;
+	border-radius: 10px;
+	-moz-box-shadow: rgba(0,0,0,0.3) 10px 10px;
+ 	-webkit-box-shadow: rgba(0,0,0,0.3) 10px 10px;
+	box-shadow: rgba(0,0,0,0.3) 10px 10px;
+}
+.menu span
+{
+	display: block;
+	width:100%;
+	white-space: nowrap;
+	position: relative;
+}
+.LoginBox span
+{
+	height 30px;
+}
+.LoginBox input
+{
+	left: 110px;	
+	clear: both;
+	display: inline;
+	position: absolute;
+}
+
+.blogPost
+{
+	border: 1px solid #333;
+}
+.blogPost .text
+{
+	width: 95%;
+}
+.blogPost .title
+{
+	
+	font-size: x-large;
+}
+.blogPost img
+{
+	width: 95%;
+} 
+.comment
+{
+	border: 1px solid #333;
+}
+.comment .text
+{
+	width: 95%;
+}
