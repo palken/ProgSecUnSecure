@@ -19,7 +19,7 @@
 			running = false;
 			return;
 		}
-		document.body.styl.backgroundColor = "white";
+		document.body.style.backgroundColor = "white";
 		startSek = document.getElementById('number').value;
 		sek = startSek;
 		setTimeout(secTic, 1000);
@@ -38,7 +38,7 @@
 		}
 	}
 	function timerEnd() {
-		document.body.styl.backgroundColor = "red";
+		document.body.style.backgroundColor = "red";
 		
 		document.getElementById('start').value = "Start timer";
 	}

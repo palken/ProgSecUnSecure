@@ -15,6 +15,7 @@
 
 <tags:header title=" - Post"></tags:header>
 
+
 <body>
 
 <%
@@ -58,10 +59,10 @@ if (loggedInUser != null && postOwner !=null)
 			%>
 			<div class="blogPost">
 				<form action="" method="post">
-					<span>Title:</span><input type="text" name="Title" value="<%=postToEdit.getTitle()%>"/><br/>
+					<span>Title:</span><input id="title" type="text" name="Title" value="<%=postToEdit.getTitle()%>"/><br/>
 					<span>Date:</span><input type="text" name="Date" disabled="disabled" value="<%=DateHelpers.toShortFormat(new Date())%>"/><span> (will be updated)</span><br/>
 					<span>Post:</span><br/>
-					<textarea class="text" rows="5" cols="30" name="Post"><%=postToEdit.getText()%></textarea>
+					<textarea class="text validate" rows="5" cols="30" name="Post"><%=postToEdit.getText()%></textarea>
 					<input type="submit" value="Post"/>
 				</form>
 			</div>

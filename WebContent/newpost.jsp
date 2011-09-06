@@ -18,6 +18,19 @@
 
 <body>
 
+<script>
+	function validate() {
+		var title = document.getElementsByName("Title")[0].value;
+		var text = document.getElementsByName("Post")[0].value;
+		if (title.search("^[^<>%$]*$") === -1 || text.search("^[^<>%$]*$") === -1) {
+			alert("Contains illegal chars! \n Remove the illegal chars (<>^%$) to be able to post");
+			document.getElementById("submitPost").style.display = "none";
+		} else {
+			document.getElementById("submitPost").style.display = "block";
+		}
+	}
+</script>
+
 <%
 User loggedInUser = (User) session.getAttribute(SessionKeys.USER_OBJECT);
 %>
@@ -65,13 +78,13 @@ User loggedInUser = (User) session.getAttribute(SessionKeys.USER_OBJECT);
 		<img src="stickyCaptcha.png" /><br />
 		<div class="blogPost">
 			<form action="" method="post" enctype="multipart/form-data">
-				<span>Title:</span><input type="text" name="Title"/><br/>
+				<span>Title:</span><input type="text" name="Title"  onblur="validate()"/><br/>
 				<span>Date:</span><input type="text" name="Date" disabled="disabled" value="<%=DateHelpers.toShortFormat(new Date())%>"/><br/>
 				<span>Post:</span><br/>
 				<span>Picture:</span><input type="file" name="Picture" accept="image/jpeg image/gif image/png"/>
-				<textarea class="text" rows="5" cols="30" name="Post"></textarea>
+				<textarea class="text" rows="5" cols="30" name="Post" onblur="validate()"></textarea>
 				<span>Captcha Answer:</span> <input name="answer" /> <br/>
-				<input type="submit" value="Post"/>
+				<input type="submit" id="submitPost" value="Post"/>
 			</form>
 		</div>
 		<%	
