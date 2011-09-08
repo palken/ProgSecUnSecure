@@ -31,8 +31,6 @@ public class Database {
 
 	public static boolean login(String username, String password) {
 		
-		System.out.println(username);
-		System.out.println(password);
 		Connection conn = createConnection();
 
 		boolean authenticated = false;

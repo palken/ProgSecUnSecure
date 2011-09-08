@@ -12,7 +12,7 @@
 <%@page import="org.apache.tomcat.util.http.fileupload.FileUpload"%>
 <%@page import="org.apache.tomcat.util.http.fileupload.MultipartStream"%>
 <%@page import="java.util.Map"%><html xmlns="http://www.w3.org/1999/xhtml">
-<%@ page import="nl.captcha.Captcha" %>
+<%@page import="nl.captcha.Captcha" %>
 
 <tags:header title=" - Post"></tags:header>
 
@@ -75,14 +75,15 @@ User loggedInUser = (User) session.getAttribute(SessionKeys.USER_OBJECT);
 	{
 		%>
 		
-		<img src="stickyCaptcha.png" /><br />
+
 		<div class="blogPost">
 			<form action="" method="post" enctype="multipart/form-data">
 				<span>Title:</span><input type="text" name="Title"  onblur="validate()"/><br/>
 				<span>Date:</span><input type="text" name="Date" disabled="disabled" value="<%=DateHelpers.toShortFormat(new Date())%>"/><br/>
+				<span>Picture:</span><input type="file" name="Picture" accept="image/jpeg image/gif image/png"/><br/>
 				<span>Post:</span><br/>
-				<span>Picture:</span><input type="file" name="Picture" accept="image/jpeg image/gif image/png"/>
 				<textarea class="text" rows="5" cols="30" name="Post" onblur="validate()"></textarea>
+				<img src="stickyCaptcha.png" /><br />
 				<span>Captcha Answer:</span> <input name="answer" /> <br/>
 				<input type="submit" id="submitPost" value="Post"/>
 			</form>
